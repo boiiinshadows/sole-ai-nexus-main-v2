@@ -20,7 +20,8 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      {/* 👇 Added basename so routing works on GitHub Pages */}
+      <BrowserRouter basename="/sole-ai-nexus-main-v2/">
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -30,7 +31,7 @@ const App = () => (
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/verification" element={<Verification />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            {/* Catch-all route */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
