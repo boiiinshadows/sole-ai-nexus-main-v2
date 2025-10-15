@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Futuristic Dark Theme */
+    --background: 210 25% 5%;
+    --foreground: 200 40% 93%;
+
+    --card: 210 30% 8%;
+    --card-foreground: 200 40% 93%;
+
+    --popover: 210 30% 8%;
+    --popover-foreground: 200 40% 93%;
+
+    --primary: 185 100% 50%;
+    --primary-foreground: 210 25% 5%;
+
+    --secondary: 271 81% 56%;
+    --secondary-foreground: 200 40% 93%;
+
+    --muted: 210 30% 15%;
+    --muted-foreground: 200 20% 65%;
+
+    --accent: 185 100% 50%;
+    --accent-foreground: 210 25% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 200 40% 93%;
+
+    --border: 210 30% 15%;
+    --input: 210 30% 12%;
+    --ring: 185 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom Neon Colors */
+    --neon-cyan: 185 100% 50%;
+    --neon-purple: 271 81% 56%;
+    --neon-glow: 185 100% 50%;
+    
+    /* Glassmorphism */
+    --glass-bg: 210 30% 8% / 0.6;
+    --glass-border: 200 40% 93% / 0.1;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(90deg, hsl(185 100% 50%), hsl(271 81% 56%));
+    --gradient-radial: radial-gradient(circle at center, hsl(185 100% 50% / 0.15), transparent);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  /* Smooth Scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, hsl(var(--neon-cyan)), hsl(var(--neon-purple)));
+    @apply rounded-full;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism Effect */
+  .glass {
+    background: rgba(11, 13, 16, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(230, 238, 243, 0.1);
+  }
+  
+  /* Neon Glow */
+  .neon-glow {
+    box-shadow: 0 0 20px hsl(var(--neon-cyan) / 0.5),
+                0 0 40px hsl(var(--neon-cyan) / 0.3);
+  }
+  
+  .neon-glow-purple {
+    box-shadow: 0 0 20px hsl(var(--neon-purple) / 0.5),
+                0 0 40px hsl(var(--neon-purple) / 0.3);
+  }
+  
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(90deg, hsl(var(--neon-cyan)), hsl(var(--neon-purple)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Gradient Border */
+  .gradient-border {
+    position: relative;
+    background: hsl(var(--card));
+    border-radius: var(--radius);
+  }
+  
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    padding: 2px;
+    background: linear-gradient(90deg, hsl(var(--neon-cyan)), hsl(var(--neon-purple)));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
